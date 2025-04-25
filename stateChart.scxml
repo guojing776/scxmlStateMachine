@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="stateChart" qt:editorversion="15.0.0" initial="S1">
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="stateChart" qt:editorversion="15.0.0" datamodel="cplusplus:TheDataModel:thedatamodel.h" initial="S1">
     <qt:editorinfo initialGeometry="239.67;117.79;-20;-20;40;40"/>
     <state id="S1">
         <qt:editorinfo geometry="426.09;151.59;-60;-50;120;100" scenegeometry="426.09;151.59;366.09;101.59;120;100"/>
@@ -7,23 +7,19 @@
             <qt:editorinfo endTargetFactors="7.84;49.14"/>
         </transition>
         <onentry>
-            <send delay="3s" event="button.clicked"/>
+            <log expr="eventData().value(QStringLiteral(&quot;myData&quot;)).toString()"/>
         </onentry>
     </state>
     <state id="S2">
         <qt:editorinfo geometry="711.86;151.59;-60;-50;120;100" scenegeometry="711.86;151.59;651.86;101.59;120;100"/>
         <transition type="external" event="button.clicked" target="S3"/>
-        <onentry>
-            <send delay="3s" event="button.clicked"/>
-        </onentry>
+        <onentry/>
     </state>
     <state id="S3">
         <qt:editorinfo geometry="546.95;297.03;-60;-50;120;100" scenegeometry="546.95;297.03;486.95;247.03;120;100"/>
         <transition type="external" event="button.clicked" target="S1">
             <qt:editorinfo endTargetFactors="50.75;87.97"/>
         </transition>
-        <onentry>
-            <send delay="3s" event="button.clicked"/>
-        </onentry>
+        <onentry/>
     </state>
 </scxml>

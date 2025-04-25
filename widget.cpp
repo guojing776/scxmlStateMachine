@@ -1,6 +1,7 @@
 #include "widget.h"
 #include "./ui_widget.h"
 #include "stateChart.h"
+#include "thedatamodel.h"
 
 const QString COLOR = ("border-radius: 50%;background-color: %1;min-width: 100px;min-height: 100px;");
 
@@ -28,13 +29,17 @@ void Widget::stateMachineInit()
         switchLed(mMachine_->activeStateNames().value(0));
     });
 
+    mMachine_->setDataModel(new TheDataModel());
     // 启动状态机
     mMachine_->start();
+
+    QVariantMap data;
+    data["myData"] = "hello world";
 
     // 点击按钮，执行槽函数
     connect(ui->switchBtn, &QAbstractButton::clicked, [=](){
         // 向状态机发送转换条件(事件)
-        mMachine_->submitEvent("button.clicked");
+        mMachine_->submitEvent("button.clicked", data);
     });
 }
 

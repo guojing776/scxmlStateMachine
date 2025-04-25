@@ -21,6 +21,7 @@ qt_add_executable(stateMachine
     widget.cpp
     widget.h
     widget.ui
+    thedatamodel.h thedatamodel.cpp
 )
 
 set_target_properties(stateMachine PROPERTIES
@@ -40,6 +41,7 @@ qt6_add_statecharts(stateMachine
     stateChart.scxml
 )
 
+target_include_directories(stateMachine PRIVATE ${PROJECT_SOURCE_DIR})
 
 install(TARGETS stateMachine
     RUNTIME DESTINATION "${INSTALL_EXAMPLEDIR}"
